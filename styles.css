@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    flex-direction: row;
+}
+nav{
+    display: flex;
+    flex-direction: column;
+    width: 9vw;
+    gap: 30px;
+}
+nav button{
+    color: #808080;
+    border: none;
+    background-color: transparent;
+    margin-left: 20px;
+    height: 40px;
+}
+main{
+    background-color: #FAFAFA;
+}
+.barraBusqueda{
+    
+    margin-left: 3vw;
+    display: flex;
+    flex-direction: row;
+}
+.barraBusqueda button{
+    background-color: transparent;
+    border: none;
+}
+input {
+    border-radius: 20px; 
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    outline: none; 
+}
+.categoriasMenu{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.categoriasMenu button{
+    border: none;
+    background-color: #EBEBEB;
+    border-radius: 20px; 
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+}
