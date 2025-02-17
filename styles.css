@@ -6,21 +6,39 @@ body{
 nav{
     display: flex;
     flex-direction: column;
-    width: 9vw;
-    gap: 30px;
+    position:fixed;
+    width: 8vw;
+}
+nav img{
+    border-radius: 30px;
+    width: 55x;
+    height: 55px;
+    object-fit: cover;
+}
+section{
+    padding-left: 10vw;
+    background-color: #FAFAFA;
 }
 nav button{
     color: #808080;
-    border: none;
+    border-color: transparent;
+    border-radius: 10px;
     background-color: transparent;
     margin-left: 20px;
-    height: 40px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+nav button p{
+    font-size: x-large;
+}
+nav button:hover{
+    background-color: #FDF0DF;
+    color: #E07609;
 }
 main{
     background-color: #FAFAFA;
 }
 .barraBusqueda{
-    
     margin-left: 3vw;
     display: flex;
     flex-direction: row;
@@ -28,6 +46,8 @@ main{
 .barraBusqueda button{
     background-color: transparent;
     border: none;
+    font-size: x-large;
+    cursor: pointer;
 }
 input {
     border-radius: 20px; 
@@ -42,15 +62,15 @@ input {
     background-color: #FAFAFA;
 }
 .categoriasMenu button{
-    border: none;
+    border-color: transparent;
     background-color: #EBEBEB;
     border-radius: 20px; 
-    border: 1px solid #ccc;
     padding: 10px 15px;
+    cursor: pointer;
 }
 .itemsMenu{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+    grid-template-columns: repeat(4,1fr); 
     gap: 10px;
     padding: 15px;
 }
@@ -61,10 +81,14 @@ input {
     font-size: 14px;
     cursor: pointer;
     text-align: center;
+    transition: 0.2s ease;
 }
 .itemsMenu button img{
     border-radius: 10px;
     width: 130px;
     height: 100px;
     object-fit: cover;
+}
+.itemsMenu button:hover{
+    transform: scale(1.05);
 }
