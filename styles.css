@@ -9,9 +9,42 @@ nav{
     position:fixed;
     width: 8vw;
 }
+main {
+    display: flex;          /* Para alinear <section> y <aside> lado a lado */
+    flex-direction: row;    /* Horizontal */
+    margin-left: 8vw;       /* Para no tapar la sección con el nav fijo */
+    width: 100%;
+    background-color: #FAFAFA;
+}
+
+section {
+    flex: 1;                /* Se expande para ocupar el espacio disponible */
+    padding-left: 2vw;      /* Espacio interno para tu contenido */
+    background-color: #FAFAFA;
+}
+
+/* El aside estará a la derecha y oculto por defecto */
+aside {
+    width: 20vw;            /* Ajusta según prefieras */
+    background-color: #fefefe;
+    display: none;          /* Oculto hasta que se agregue algo */
+    border-left: 1px solid #ccc;
+    padding: 15px;
+}
+
+/* Elementos dentro del aside */
+.ordenesActuales {
+    /* Cualquier estilo adicional para la lista de orden */
+}
+.ordenesActuales ul li {
+    color: black;         /* Asegúrate de tener un color de texto visible */
+    list-style: disc;     /* Para mostrar viñetas o algo similar */
+    margin-left: 1rem;
+  }
+  
 nav img{
     border-radius: 30px;
-    width: 55x;
+    width: 55px;
     height: 55px;
     object-fit: cover;
 }
