@@ -1,6 +1,6 @@
 :root{
-    --ColorPrimario: #348ec9;
-    --ColorPrimarioF:#cee4f4;
+    --ColorPrimario: #c94a34; /*#348ec9 - #cee4f*/
+    --ColorPrimarioF:#f4ddce;
 }
 body{
     display: flex;
@@ -31,6 +31,8 @@ section section{
 
 /* El aside estará a la derecha y oculto por defecto */
 aside {
+    position: fixed;
+    left: 73vw;
     width: 20vw;            /* Ajusta según prefieras */
     background-color: #fefefe;
     display: none;          /* Oculto hasta que se agregue algo */
@@ -40,7 +42,7 @@ aside {
 
 /* Elementos dentro del aside */
 .ordenesActuales {
-    /* Cualquier estilo adicional para la lista de orden */
+    display: none;
 }
 .ordenesActuales ul li {
     color: black;         /* Asegúrate de tener un color de texto visible */
@@ -69,6 +71,7 @@ nav button p{
 nav button:hover{
     background-color: var(--ColorPrimarioF);
     color: var(--ColorPrimario);
+    transform: scale(1.05);
 }
 main{
     background-color: #FAFAFA;
@@ -102,6 +105,11 @@ input {
     border-radius: 20px; 
     padding: 10px 15px;
     cursor: pointer;
+    transition: 0.2s;
+}
+.categoriasMenu button:hover{
+    transform: scale(1.05);
+    background-color: var(--ColorPrimario);
 }
 .itemsMenu{
     display: flex;
@@ -144,7 +152,22 @@ span{
 }
 .itemsMenu button:hover{
     transform: scale(1.05);
+    background-color: var(--ColorPrimario);
 }
-aside{
-    list-style: none;
+html {
+    scroll-behavior: smooth;
+}
+aside button{
+    border: none;
+    background-color: var(--ColorPrimarioF);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s ease;
+}
+aside button:hover{
+    transform: scale(1.05);
+    background-color: var(--ColorPrimario);
 }

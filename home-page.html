@@ -24,13 +24,13 @@
              <button>🔍︎</button>
             </div>
             <div class="categoriasMenu">
-                <button>🍕 Pizza</button>
-                <button>🍔Hamburguesas</button>
-                <button>🌮Papadia</button>
-                <button>🥤Bebidas</button>
+                <a href="#pizzas"><button>🍕 Pizza</button></a>
+                <a href="#papadias"><button>🌮 Papadias</button></a>
+                <a href="#hamburguesas"><button>🍔 Hamburguesas</button></a>
+                <a href="#bebidas"><button>🥤 Bebidas</button></a>
             </div>
             <div class="itemsMenu">
-                <b>Pizzas</b>
+                <b id="pizzas">Pizzas</b>
                 <section class="Pizzas">
                     <button>
                         <div>
@@ -144,7 +144,7 @@
                         <span>Nuestra Pizza The Works incluye pepperoni, salchicha italiana, jamón, champiñones, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?</span>
                     </button>
                 </section>
-                <p>Papadias</p>
+                <p id="papadias">Papadias</p>
                 <section class="Papadias">
                     <button>
                         <div>
@@ -202,7 +202,7 @@
                         <span>Nuestra Papadia Combo incluye una combinación de ingredientes como pepperoni, salchicha italiana, jamón, champiñones, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?</span>
                     </button>
                 </section>
-                <p>Hamburguesas</p>
+                <p id="hamburguesas">Hamburguesas</p>
                 <section class="Hamburguesas">
                     <button>
                         <div>
@@ -271,7 +271,7 @@
                         <span>Nuestra Hamburguesa Queso Tocineta incluye una jugosa carne de res, queso derretido, tocineta crujiente, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?</span>
                     </button>
                 </section>
-                <p>Bebidas</p>
+                <p id="bebidas">Bebidas</p>
                 <section class="Bebidas">
                     <button>
                         <div>
@@ -334,11 +334,14 @@
 
         </section>
         <aside>
-            <div class="ordenesActuales" style="display: none;">
-                <!-- Aquí insertaremos la lista de orden actual mediante JS -->
-                <ul id="ordenesActuales"></ul>
-            </div>
-            <button>Realizar pedido</button>
+            <form action="home-page.html">
+                <div class="ordenesActuales">
+                    <!-- Aquí insertaremos la lista de orden actual mediante JS -->
+                    <ul id="ordenesActuales"></ul>
+                    <p id="total">Total: $0</p>
+                </div>
+                <button type="submit">Realizar pedido</button>
+            </form>
         </aside>
     </main>
     <footer>
