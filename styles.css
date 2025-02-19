@@ -1,3 +1,7 @@
+:root{
+    --ColorPrimario: #348ec9;
+    --ColorPrimarioF:#cee4f4;
+}
 body{
     display: flex;
     flex-direction: row;
@@ -17,10 +21,12 @@ main {
     background-color: #FAFAFA;
 }
 
-section {
-    flex: 1;                /* Se expande para ocupar el espacio disponible */
-    padding-left: 2vw;      /* Espacio interno para tu contenido */
+section section{   
+    display: grid;
+    grid-template-columns: repeat(2,1fr);         
     background-color: #FAFAFA;
+    gap: 30px;
+    padding-left: 10vw;
 }
 
 /* El aside estará a la derecha y oculto por defecto */
@@ -38,7 +44,7 @@ aside {
 }
 .ordenesActuales ul li {
     color: black;         /* Asegúrate de tener un color de texto visible */
-    list-style: disc;     /* Para mostrar viñetas o algo similar */
+    list-style: decimal;     /* Para mostrar viñetas o algo similar */
     margin-left: 1rem;
   }
   
@@ -47,10 +53,6 @@ nav img{
     width: 55px;
     height: 55px;
     object-fit: cover;
-}
-section{
-    padding-left: 10vw;
-    background-color: #FAFAFA;
 }
 nav button{
     color: #808080;
@@ -65,8 +67,8 @@ nav button p{
     font-size: x-large;
 }
 nav button:hover{
-    background-color: #FDF0DF;
-    color: #E07609;
+    background-color: var(--ColorPrimarioF);
+    color: var(--ColorPrimario);
 }
 main{
     background-color: #FAFAFA;
@@ -102,12 +104,17 @@ input {
     cursor: pointer;
 }
 .itemsMenu{
-    display: grid;
-    grid-template-columns: repeat(4,1fr); 
+    display: flex;
+    flex-direction: column;
     gap: 10px;
     padding: 15px;
 }
 .itemsMenu button{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 25vw;
+    height: 38vh;
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -115,6 +122,19 @@ input {
     cursor: pointer;
     text-align: center;
     transition: 0.2s ease;
+}
+.itemsMenu button div{
+    display: flex;
+    flex-direction: row;
+    width: 10vw;
+}
+.itemsMenu button div div{
+    display: flex;
+    flex-direction: column;
+}
+span{
+    display: unset;
+    width: 23vw;
 }
 .itemsMenu button img{
     border-radius: 10px;
@@ -124,4 +144,7 @@ input {
 }
 .itemsMenu button:hover{
     transform: scale(1.05);
+}
+aside{
+    list-style: none;
 }
