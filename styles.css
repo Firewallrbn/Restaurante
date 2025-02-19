@@ -1,6 +1,6 @@
 :root{
-    --ColorPrimario: #c94a34; /*#348ec9 - #cee4f*/
-    --ColorPrimarioF:#f4ddce;
+    --ColorPrimario:#2c3c89 ; /*#348ec9 - #cee4f           #c94a34-#f4ddce */
+    --ColorPrimarioF:#5186ad;
 }
 body{
     display: flex;
@@ -12,6 +12,9 @@ nav{
     flex-direction: column;
     position:fixed;
     width: 8vw;
+}
+h1{
+    justify-self: center;
 }
 main {
     display: flex;          /* Para alinear <section> y <aside> lado a lado */
@@ -56,8 +59,11 @@ nav img{
     height: 55px;
     object-fit: cover;
 }
-nav button{
+nav a, nav button{
     color: #808080;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
     border-color: transparent;
     border-radius: 10px;
     background-color: transparent;
@@ -65,33 +71,17 @@ nav button{
     cursor: pointer;
     transition: 0.3s ease;
 }
-nav button p{
+nav a p{
+    justify-self: center;
     font-size: x-large;
 }
-nav button:hover{
+nav a:hover, nav button:hover{
     background-color: var(--ColorPrimarioF);
     color: var(--ColorPrimario);
     transform: scale(1.05);
 }
 main{
     background-color: #FAFAFA;
-}
-.barraBusqueda{
-    margin-left: 3vw;
-    display: flex;
-    flex-direction: row;
-}
-.barraBusqueda button{
-    background-color: transparent;
-    border: none;
-    font-size: x-large;
-    cursor: pointer;
-}
-input {
-    border-radius: 20px; 
-    border: 1px solid #ccc;
-    padding: 10px 15px;
-    outline: none; 
 }
 .categoriasMenu{
     display: flex;

@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const asideElement = document.querySelector("aside");
     const ordenesActualesDiv = document.querySelector(".ordenesActuales");
-    const totalElement = document.getElementById("total"); // Seleccionamos el <p> existente
+    const totalElement = document.getElementById("total");
 
-    // Inicialmente, oculta ambos elementos.
+    // Ocultar aside y ordenes al inicio
     asideElement.style.display = "none";
     ordenesActualesDiv.style.display = "none";
 
@@ -25,11 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
             if (ordenes[itemName]) {
                 // Si el producto ya está en la lista, aumenta la cantidad
                 ordenes[itemName].cantidad++;
-                ordenes[itemName].elementoLi.textContent = `${itemName} x${ordenes[itemName].cantidad} - $${(ordenes[itemName].cantidad * itemPrice).toFixed(2)}`;
+                ordenes[itemName].elementoLi.querySelector(".cantidad").textContent = `x${ordenes[itemName].cantidad}`;
+                ordenes[itemName].elementoLi.querySelector(".precio").textContent = `$${(ordenes[itemName].cantidad * itemPrice).toFixed(2)}`;
             } else {
                 // Si el producto no está en la lista, agrégalo
                 const listItem = document.createElement("li");
-                listItem.textContent = `${itemName} x1 - $${itemPrice.toFixed(2)}`;
+                listItem.innerHTML = `
+                    ${itemName} <span class="cantidad">x1</span> - <span class="precio">$${itemPrice.toFixed(2)}</span>
+                    <button class="borrar">Borrar</button>
+                `;
+
                 ordenActualList.appendChild(listItem);
 
                 // Guardar en el objeto ordenes
@@ -38,20 +43,30 @@ document.addEventListener("DOMContentLoaded", () => {
                     precioUnitario: itemPrice,
                     elementoLi: listItem
                 };
+
+                // Agregar evento de borrar al botón
+                listItem.querySelector(".borrar").addEventListener("click", () => {
+                    total -= ordenes[itemName].cantidad * ordenes[itemName].precioUnitario; // Restar el precio total del producto eliminado
+                    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+
+                    delete ordenes[itemName]; // Eliminar del objeto
+                    listItem.remove();
+
+                    // Ocultar aside si ya no hay productos
+                    if (Object.keys(ordenes).length === 0) {
+                        asideElement.style.display = "none";
+                        ordenesActualesDiv.style.display = "none";
+                    }
+                });
             }
 
             // Actualizar el total
             total += itemPrice;
             totalElement.textContent = `Total: $${total.toFixed(2)}`;
 
-            // Muestra aside si está oculto
-            if (asideElement.style.display === "none") {
-                asideElement.style.display = "block";
-            }
-            // Muestra .ordenesActuales si está oculta
-            if (ordenesActualesDiv.style.display === "none") {
-                ordenesActualesDiv.style.display = "block";
-            }
+            // Mostrar aside si está oculto
+            asideElement.style.display = "block";
+            ordenesActualesDiv.style.display = "block";
         });
     });
 });
