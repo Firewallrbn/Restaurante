@@ -2,9 +2,66 @@
     --ColorPrimario:#2c3c89 ; /*#348ec9 - #cee4f           #c94a34-#f4ddce */
     --ColorPrimarioF:#5186ad;
 }
-body{
+/* Sección de bienvenida */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.home {
+    width: 100%;
+    height: 60vh; /* Ajusta la altura: 60% de la ventana, por ejemplo */
     display: flex;
-    flex-direction: row;
+    align-items: center;       /* Centra verticalmente el contenido */
+    justify-content: center;   /* Centra horizontalmente el contenido */
+    background: url('bac3.webp') center/cover no-repeat;
+    /* O puedes usar un color de fondo si no tienes imagen:
+       background-color: #FAFAFA;
+    */
+    position: relative;
+    text-align: center; /* Centra texto */
+  }
+  
+  /* Ajusta el contenedor interno de la sección de bienvenida */
+  .home-content {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+    padding: 20px 40px;
+    border-radius: 10px;
+    max-width: 600px;
+  }
+  
+  /* Título principal en la portada */
+  .home-content h1 {
+    font-size: 3rem;
+    color: #FF7B00; /* Un naranja llamativo, por ejemplo */
+    margin-bottom: 10px;
+  }
+  
+  /* Texto descriptivo */
+  .home-content p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Botón “Ver Menú” */
+  .home-content button {
+    background-color: #FFB347;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+    transition: background-color 0.3s;
+  }
+  
+  .home-content button:hover {
+    background-color: #FF9000;
+  }
+
+body{
     font-family:Arial, Helvetica, sans-serif;
 }
 nav{
@@ -12,6 +69,7 @@ nav{
     flex-direction: column;
     position:fixed;
     width: 8vw;
+    height: 100vh;
 }
 h1{
     justify-self: center;
