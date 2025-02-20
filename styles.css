@@ -1,6 +1,6 @@
 :root{
-    --ColorPrimario:#2c3c89 ; /*#348ec9 - #cee4f           #c94a34-#f4ddce */
-    --ColorPrimarioF:#5186ad;
+    --ColorPrimario:#b74718 ; /*#348ec9 - #cee4f           #c94a34-#f4ddce */
+    --ColorPrimarioF:#d3af8b;
 }
 /* Sección de bienvenida */
 * {
@@ -64,22 +64,16 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
 }
-nav{
-    display: flex;
-    flex-direction: column;
-    position:fixed;
-    width: 8vw;
-    height: 100vh;
-}
-h1{
-    justify-self: center;
+
+h2{
+    color:#FF9000;
 }
 main {
     display: flex;          /* Para alinear <section> y <aside> lado a lado */
     flex-direction: row;    /* Horizontal */
     margin-left: 8vw;       /* Para no tapar la sección con el nav fijo */
-    width: 100%;
     background-color: #FAFAFA;
+    margin: 2rem;
 }
 
 section section{   
@@ -87,14 +81,16 @@ section section{
     grid-template-columns: repeat(2,1fr);         
     background-color: #FAFAFA;
     gap: 30px;
-    padding-left: 10vw;
+    padding-left: 6vw;
 }
 
 /* El aside estará a la derecha y oculto por defecto */
 aside {
-    position: fixed;
+    position: sticky;
+    top: 0;
     left: 73vw;
-    width: 20vw;            /* Ajusta según prefieras */
+    width: 20vw;
+    height: 100vh;            /* Ajusta según prefieras */
     background-color: #fefefe;
     display: none;          /* Oculto hasta que se agregue algo */
     border-left: 1px solid #ccc;
@@ -110,17 +106,26 @@ aside {
     list-style: decimal;     /* Para mostrar viñetas o algo similar */
     margin-left: 1rem;
   }
-  
+  nav{
+    display: flex;
+    flex-direction: column;
+    position:sticky;
+    top: 0;
+    gap: 30px;
+    width: 8vw;
+    height: 100vh;
+}
 nav img{
     border-radius: 30px;
     width: 55px;
     height: 55px;
     object-fit: cover;
 }
-nav a, nav button{
+nav a{
     color: #808080;
     justify-content: center;
     text-align: center;
+    height: 12vh;
     text-decoration: none;
     border-color: transparent;
     border-radius: 10px;
@@ -138,12 +143,12 @@ nav a:hover, nav button:hover{
     color: var(--ColorPrimario);
     transform: scale(1.05);
 }
-main{
-    background-color: #FAFAFA;
-}
 .categoriasMenu{
     display: flex;
     flex-direction: row;
+    /*position: sticky;
+    top: 0;                     Descomentar para fijar, se ve mal
+    padding: 20px;*/
     gap: 20px;
     background-color: #FAFAFA;
 }
