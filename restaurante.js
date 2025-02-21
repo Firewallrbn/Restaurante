@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.onload = () => {
     const asideElement = document.querySelector("aside");
     const ordenesActualesDiv = document.querySelector(".ordenesActuales");
     const totalElement = document.getElementById("total");
@@ -76,4 +76,4 @@ document.addEventListener("DOMContentLoaded", () => {
     realizarPedidoBtn.addEventListener("click", () => {
         actualizarPedido();
     });
-});
+};

@@ -2,7 +2,6 @@
     --ColorPrimario:#b74718 ; /*#348ec9 - #cee4f           #c94a34-#f4ddce */
     --ColorPrimarioF:#d3af8b;
 }
-/* Sección de bienvenida */
 * {
     margin: 0;
     padding: 0;
@@ -15,38 +14,31 @@
     align-items: center; 
     justify-content: center;  
     background: url('Imagenes/bac3.webp') center/cover no-repeat;
-    /* O puedes usar un color de fondo si no tienes imagen:
-       background-color: #FAFAFA;
-    */
     position: relative;
-    text-align: center; /* Centra texto */
+    text-align: center; 
   }
-  
-  /* Ajusta el contenedor interno de la sección de bienvenida */
+
   .home-content {
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo semitransparente */
+    background-color: rgba(255, 255, 255, 0.7); 
     padding: 20px 40px;
     border-radius: 10px;
     max-width: 600px;
   }
   
-  /* Título principal en la portada */
   .home-content h1 {
     font-size: 3rem;
-    color: #FF7B00; /* Un naranja llamativo, por ejemplo */
+    color: #FF7B00; 
     margin-bottom: 10px;
   }
   
-  /* Texto descriptivo */
   .home-content p {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 20px;
   }
   
-  /* Botón “Ver Menú” */
   .home-content button {
-    background-color: #FFB347;
+    background-color: var(--ColorPrimarioF);
     border: none;
     padding: 12px 20px;
     font-size: 1rem;
@@ -57,7 +49,7 @@
   }
   
   .home-content button:hover {
-    background-color: #FF9000;
+    background-color: var(--ColorPrimario);
   }
 
 body{
@@ -68,9 +60,9 @@ h2{
     color:#FF9000;
 }
 main {
-    display: flex;          /* Para alinear <section> y <aside> lado a lado */
-    flex-direction: row;    /* Horizontal */
-    margin-left: 8vw;       /* Para no tapar la sección con el nav fijo */
+    display: flex;    
+    flex-direction: row;    
+    margin-left: 8vw;       
     background-color: #FAFAFA;
     margin: 2rem;
 }
@@ -83,26 +75,24 @@ section section{
     padding-left: 6vw;
 }
 
-/* El aside estará a la derecha y oculto por defecto */
 aside {
     position: sticky;
     top: 0;
     left: 73vw;
     width: 20vw;
-    height: 100vh;            /* Ajusta según prefieras */
+    height: 100vh;      
     background-color: #fefefe;
-    display: none;          /* Oculto hasta que se agregue algo */
+    display: none;    
     border-left: 1px solid #ccc;
     padding: 15px;
 }
 
-/* Elementos dentro del aside */
 .ordenesActuales {
     display: none;
 }
 .ordenesActuales ul li {
-    color: black;         /* Asegúrate de tener un color de texto visible */
-    list-style: decimal;     /* Para mostrar viñetas o algo similar */
+    color: black;        
+    list-style: decimal;     
     margin-left: 1rem;
   }
   nav{
