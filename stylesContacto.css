@@ -16,7 +16,7 @@ body::before{
     left: 0;
     width:100%;
     height: 100vh;
-    background: url("Imagenes/pizza-hawaiana.jpg") no-repeat center center/cover;
+    background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat, #f4a261;
     opacity: 0.5; 
     z-index: -1; 
 }
