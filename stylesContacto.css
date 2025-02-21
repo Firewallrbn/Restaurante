@@ -15,28 +15,27 @@ body::before{
     top: 0;
     left: 0;
     width:100%;
-    height: 100%    ;
-    background: url("Imagenes/ham-pollo.png") no-repeat center center/cover;
+    height: 100vh;
+    background: url("Imagenes/pizza-hawaiana.jpg") no-repeat center center/cover;
     opacity: 0.5; 
     z-index: -1; 
 }
 nav{
     display: flex;
     flex-direction: column;
-    position:sticky;
-    top: 5vh;
     gap: 3vh;
     width: 8vw;
     height: 100vh;
 }
 h1{
     background: linear-gradient(45deg,#b74718, #c37220);
+    flex-grow: 1;
     color: white;
     width: 50vw;
     padding: 10px;
     border-radius: 20px;
     justify-items: flex-end;
-    margin-left: 18rem;
+    margin-left: 1rem;
 }
 nav img{
     border-radius: 30px;
@@ -49,7 +48,7 @@ nav a{
     justify-content: center;
     text-align: center;
     text-decoration: none;
-    height: 16vh;
+    height: 12vh;
     border-color: transparent;
     border-radius: 10px;
     background-color: transparent;
@@ -70,7 +69,7 @@ main{
     display: flex;
     flex-direction: column;
     width: 70vw;
-    gap: 10rem;
+    height: 97vh;
 }
 div{
     display: flex;
@@ -78,23 +77,31 @@ div{
     gap: 8vh;
     justify-items: center;
     width: 80vw;
+    height: 97vh;
 }
 section{
     display: flex;
     flex-direction: row;
-    gap: 20vh;
-}
-p{
-    width: 30vw;
+    gap: 8vw;
+    flex-grow: 1;
 }
 img{
-    width: 100px;
-    height: 100px;
+    width: 8rem;
+    height: 8rem;
 }
-main>footer{
+.informacion{
     width: 80vw;
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
     height: 10vh;
-    justify-items: center;
+    align-content: center;
+    text-align: center;
     background: linear-gradient(45deg,#b74718, #c37220);
     color: white;
+}
+@media (max-width: 500px){
+    div{
+        font-size: xx-large !important;
+    }
 }
