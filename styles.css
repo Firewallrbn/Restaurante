@@ -252,6 +252,9 @@ justify-self: center;
     .itemsMenu button img{
         width: 27vw;
     }
+    .categoriasMenu{
+        display: unset;
+    }
     }
 
 #pizzas,#papadias,#hamburguesas,#papadias{
