@@ -1,38 +1,38 @@
 window.onload = () => {
-        const urlAPI = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhCgG_ATRZS9ueB9UDo47MCAFnvsY9-Ci6TM9lD5DWyLZbIw078qIWQqHn0uBdXQdOWPVoVzWf5vjWS7iLPhKXY2z-4fljxl6T0PPU4UV4H0SELNS3oGIq6U3pbwoJr_W8rUKIL-GsDv1wG410tn6SqjJZy7KruXVxR1_IZ2kC9WXP3D3TtqycpFfjNNJVCQbGvMpfD9txRTmUgIWUKkpoPqYj86_aXYxy7lGCR3no7S5TsPniF1j7TUAGO1gjygBQBhlI9Y7sYNaUlrECPR9DQUiZOTQ&lib=MMIL2yF0RE_w_6F5I9VPw8dTystS0gYhU"; 
-        async function getData(url) {
-            try {
-              const response = await fetch(url);
-              if (!response.ok) {
-                throw new Error(`Response status: ${response.status}`);
-              }
-          
-              const json = await response.json();
-              console.log(json);
-              return json;
-            } catch (error) {
-              console.error(error.message);
+        const URL_API = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhCgG_ATRZS9ueB9UDo47MCAFnvsY9-Ci6TM9lD5DWyLZbIw078qIWQqHn0uBdXQdOWPVoVzWf5vjWS7iLPhKXY2z-4fljxl6T0PPU4UV4H0SELNS3oGIq6U3pbwoJr_W8rUKIL-GsDv1wG410tn6SqjJZy7KruXVxR1_IZ2kC9WXP3D3TtqycpFfjNNJVCQbGvMpfD9txRTmUgIWUKkpoPqYj86_aXYxy7lGCR3no7S5TsPniF1j7TUAGO1gjygBQBhlI9Y7sYNaUlrECPR9DQUiZOTQ&lib=MMIL2yF0RE_w_6F5I9VPw8dTystS0gYhU"; 
+        fetch(URL_API)
+    .then(res => res.json())
+    .then(data => {
+      // data.data es el array con los productos
+      const productos = data.data;
+      // Llamamos a una función que dibuje esos productos
+      dibujarProductos(productos);
+    })
+    .catch(error => console.error("Error al obtener menú:", error));
+
+    function dibujarProductos(productos) {
+        const container = document.getElementById("itemsMenu");
+        container.innerHTML = ""; // Limpio por si acaso
+      
+        productos.forEach(prod => {
+            if (prod.id===10) {
+                const section = document.createElement("section");
+                section.innerHTML = `<h2>Papadias</h2>`; //No se como separar las secciones help
             }
-          }
-        Datos=getData(urlAPI);//Datos de la API
-
-    const asideElement = document.querySelector("aside");
-    const ordenesActualesDiv = document.querySelector(".ordenesActuales");
-    const totalElement = document.getElementById("total");
-    const pedidoInput = document.getElementById("pedidoInput");
-    const ordenActualList = document.getElementById("ordenesActuales");
-    const realizarPedidoBtn = document.getElementById("realizarPedido");
-
-    asideElement.style.display = "none";
-    ordenesActualesDiv.style.display = "none";
-
-    const ordenes = {};
-    let total = 0;
-
-    const productButtons = document.querySelectorAll(".itemsMenu button");
-
-    productButtons.forEach(button => {
-        button.addEventListener("click", () => {
+          // Creamos un elemento, por ejemplo, un <button> con imagen y precio...
+          const button = document.createElement("button");
+          button.innerHTML = `
+            <div>
+              <img src="${prod.imagen}" alt="${prod.nombre}">
+              <div>
+                <p>${prod.nombre}</p>
+                <span>$${prod.precio}</span>
+              </div>
+            </div>
+            <span>${prod.descripcion}</span>
+          `;
+          // Agregamos el evento para añadir al carrito
+          button.addEventListener("click", () => {
             const itemName = button.querySelector("p").textContent;
             const itemPrice = parseFloat(button.querySelector("span").textContent.replace("$", ""));
 
@@ -77,7 +77,27 @@ window.onload = () => {
             asideElement.style.display = "block";
             ordenesActualesDiv.style.display = "block";
         });
-    });
+        
+          // Insertamos ese button en el contenedor
+          container.appendChild(button);
+        });
+      }
+    const asideElement = document.querySelector("aside");
+    const ordenesActualesDiv = document.querySelector(".ordenesActuales");
+    const totalElement = document.getElementById("total");
+    const pedidoInput = document.getElementById("pedidoInput");
+    const ordenActualList = document.getElementById("ordenesActuales");
+    const realizarPedidoBtn = document.getElementById("realizarPedido");
+
+    asideElement.style.display = "none";
+    ordenesActualesDiv.style.display = "none";
+
+    const ordenes = {};
+    let total = 0;
+
+    const productButtons = document.querySelectorAll(".itemsMenu button");
+
+
 
     function actualizarPedido() {
         const pedidoArray = Object.keys(ordenes).map(item => ({
