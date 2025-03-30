@@ -1,4 +1,21 @@
 window.onload = () => {
+        const urlAPI = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLhCgG_ATRZS9ueB9UDo47MCAFnvsY9-Ci6TM9lD5DWyLZbIw078qIWQqHn0uBdXQdOWPVoVzWf5vjWS7iLPhKXY2z-4fljxl6T0PPU4UV4H0SELNS3oGIq6U3pbwoJr_W8rUKIL-GsDv1wG410tn6SqjJZy7KruXVxR1_IZ2kC9WXP3D3TtqycpFfjNNJVCQbGvMpfD9txRTmUgIWUKkpoPqYj86_aXYxy7lGCR3no7S5TsPniF1j7TUAGO1gjygBQBhlI9Y7sYNaUlrECPR9DQUiZOTQ&lib=MMIL2yF0RE_w_6F5I9VPw8dTystS0gYhU"; 
+        async function getData(url) {
+            try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+              }
+          
+              const json = await response.json();
+              console.log(json);
+              return json;
+            } catch (error) {
+              console.error(error.message);
+            }
+          }
+        Datos=getData(urlAPI);//Datos de la API
+
     const asideElement = document.querySelector("aside");
     const ordenesActualesDiv = document.querySelector(".ordenesActuales");
     const totalElement = document.getElementById("total");
