@@ -267,7 +267,11 @@ aside button:hover {
     transform: scale(1.05);
     background-color: var(--ColorPrimario);
 }
-
+#formCliente{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
 /* Ajustes responsivos */
 @media (max-width: 800px) {
     section section {

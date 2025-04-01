@@ -139,7 +139,6 @@ window.onload = () => {
     actualizarPedido();     
     modal.style.display = "block"; // Muestra el modal
   });
-
   // 8. Cerrar modal al hacer clic en la "X"
   closeModalBtn.addEventListener("click", () => {
     modal.style.display = "none";
@@ -153,17 +152,14 @@ window.onload = () => {
     const nombre = document.getElementById("nombre").value.trim();
     const telefono = document.getElementById("telefono").value.trim();
     const direccion = document.getElementById("direccion").value.trim();
-  
     // Convertir carrito a array
     const pedidoArray = Object.keys(ordenes).map(item => ({
       nombre: item,
       cantidad: ordenes[item].cantidad,
       precioUnitario: ordenes[item].precioUnitario
     }));
-  
     // Calcular el total
     const totalPedido = pedidoArray.reduce((acc, item) => acc + (item.precioUnitario * item.cantidad), 0);
-  
     // Armar objeto final
     const pedido = {
       nombreCliente: nombre,
@@ -177,6 +173,7 @@ window.onload = () => {
       // Realizar POST a tu WebApp
       const response = await fetch(URL_PEDIDOS, {
         method: "POST",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         },
