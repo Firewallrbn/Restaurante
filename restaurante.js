@@ -1,4 +1,4 @@
-3window.onload = () => {
+window.onload = () => {
   // URL que devuelve el menú (GET)
   const URL_MENU = "https://script.google.com/macros/s/AKfycbwpqaC6RhJ_QFBglo4GsSPdkRn5CFG0QrdCob2knohcUccdV5kKFlL6do7yJBDjGutc/exec"; 
   
@@ -26,7 +26,7 @@
   // 3. Variables para manejar carrito (ordenes) y total
   const ordenes = {};
   let total = 0;
-
+  let catActual="";
   // 4. Pedir menú a la API (GET)
   fetch(URL_MENU)
     .then(res => res.json())
@@ -38,80 +38,87 @@
 
   // 5. Función para dibujar productos en el contenedor
   function dibujarProductos(productos) {
+    const container = document.getElementById("itemsMenu");
+        container.innerHTML = ""; // Limpio por si acaso
     itemsMenuContainer.innerHTML = ""; // Limpio contenedor por si acaso
 
     productos.forEach(prod => {
-      // Crear un button con imagen, precio, descripción, etc.
-      const button = document.createElement("button");
-      button.innerHTML = `
-        <div>
-          <img src="${prod.imagen}" alt="${prod.nombre}">
-          <div>
-            <p>${prod.nombre}</p>
-            <span>$${prod.precio}</span>
-          </div>
-        </div>
-        <span>${prod.descripcion}</span>
-      `;
-
-      // Evento para añadir al carrito
-      button.addEventListener("click", () => {
-        const itemName = prod.nombre;
-        const itemPrice = parseFloat(prod.precio);
-
-        // Verificar si el producto ya existe en el carrito
-        if (ordenes[itemName]) {
-          ordenes[itemName].cantidad++;
-          ordenes[itemName].elementoLi.querySelector(".cantidad").textContent = `x${ordenes[itemName].cantidad}`;
-          ordenes[itemName].elementoLi.querySelector(".precio").textContent = `$${(ordenes[itemName].cantidad * itemPrice).toFixed(2)}`;
-        } else {
-          // Crear elemento <li> para mostrar en la lista de ordenes actuales
-          const listItem = document.createElement("li");
-          listItem.innerHTML = `
-            ${itemName} <span class="cantidad">x1</span> - 
-            <span class="precio">$${itemPrice.toFixed(2)}</span>
-            <button class="borrar">-</button>
-          `;
-          ordenActualList.appendChild(listItem);
-
-          // Guardar la info en el objeto "ordenes"
-          ordenes[itemName] = {
-            cantidad: 1,
-            precioUnitario: itemPrice,
-            elementoLi: listItem
-          };
-
-          // Evento para borrar el item desde la lista
-          listItem.querySelector(".borrar").addEventListener("click", () => {
-            total -= ordenes[itemName].cantidad * ordenes[itemName].precioUnitario;
-            totalElement.textContent = `Total: $${total.toFixed(2)}`;
-
-            delete ordenes[itemName];
-            listItem.remove();
-
-            actualizarPedido();
-
-            // Si se queda sin pedidos, oculto aside y las órdenes
-            if (Object.keys(ordenes).length === 0) {
-              asideElement.style.display = "none";
-              ordenesActualesDiv.style.display = "none";
-            }
+      if(catActual!=prod.categoria){ //Revisamos si la categoria es diferente a la anterior
+        const h2 = document.createElement("h2");
+        h2.textContent = prod.categoria+"s";
+        container.appendChild(h2);
+        const section = document.createElement("section");
+        section.classList.add(prod.categoria+"s");
+        productos.forEach(p => {
+          if (p.categoria === prod.categoria) {
+            const button = document.createElement("button");
+            button.innerHTML = `
+              <div>
+                <img src="${p.imagen}" alt="${p.nombre}">
+                <div>
+                  <p>${p.nombre}</p>
+                  <span>$${p.precio}</span>
+                </div>
+              </div>
+              <span>${p.descripcion}</span>
+            `;
+            button.addEventListener("click", () => {
+              const itemName = button.querySelector("p").textContent;
+              const itemPrice = parseFloat(button.querySelector("span").textContent.replace("$", ""));
+  
+              if (ordenes[itemName]) {
+                  ordenes[itemName].cantidad++;
+                  ordenes[itemName].elementoLi.querySelector(".cantidad").textContent = `x${ordenes[itemName].cantidad}`;
+                  ordenes[itemName].elementoLi.querySelector(".precio").textContent = `$${(ordenes[itemName].cantidad * itemPrice).toFixed(2)}`;
+              } else {
+                  const listItem = document.createElement("li");
+                  listItem.innerHTML = `
+                      ${itemName} <span class="cantidad">x1</span> - <span class="precio">$${itemPrice.toFixed(2)}</span>
+                      <button class="borrar">-</button>
+                  `;
+                  ordenActualList.appendChild(listItem);
+  
+                  ordenes[itemName] = {
+                      cantidad: 1,
+                      precioUnitario: itemPrice,
+                      elementoLi: listItem
+                  };
+  
+                  listItem.querySelector(".borrar").addEventListener("click", () => {
+                      total -= ordenes[itemName].cantidad * ordenes[itemName].precioUnitario;
+                      totalElement.textContent = `Total: $${total.toFixed(2)}`;
+  
+                      delete ordenes[itemName];
+                      listItem.remove();
+  
+                      actualizarPedido();
+  
+                      if (Object.keys(ordenes).length === 0) {
+                          asideElement.style.display = "none";
+                          ordenesActualesDiv.style.display = "none";
+                      }
+                  });
+              }
+  
+              total += itemPrice;
+              totalElement.textContent = `Total: $${total.toFixed(2)}`;
+              actualizarPedido();
+  
+              asideElement.style.display = "block";
+              ordenesActualesDiv.style.display = "block";
           });
-        }
-
-        // Actualizar total y mostrar aside
-        total += itemPrice;
-        totalElement.textContent = `Total: $${total.toFixed(2)}`;
-        actualizarPedido();
-        asideElement.style.display = "block";
-        ordenesActualesDiv.style.display = "block";
-      });
-
-      // Insertar button en el contenedor
-      itemsMenuContainer.appendChild(button);
+          
+            // Insertamos ese button en el contenedor
+            container.appendChild(button);
+            section.appendChild(button);
+          }
+        });
+        container.appendChild(section);  
+      }
+      catActual=prod.categoria;
+      // Agregamos el evento para añadir al carrito
     });
   }
-
   // 6. Función para actualizar valor del input hidden con el detalle del pedido
   function actualizarPedido() {
     const pedidoArray = Object.keys(ordenes).map(item => ({
