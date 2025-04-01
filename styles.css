@@ -1,43 +1,47 @@
-:root{
-    --ColorPrimario:#f4a261; /* Pale orange */
-    --ColorPrimarioF:#e07b3c;
+:root {
+    --ColorPrimario: #f4a261;
+    /* Pale orange */
+    --ColorPrimarioF: #e07b3c;
 }
+
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
+/* Sección "home" con imagen de fondo */
 .home {
     height: 60vh;
     display: flex;
-    align-items: center; 
-    justify-content: center;  
+    align-items: center;
+    justify-content: center;
     background: url('Imagenes/bac4.webp') center/cover no-repeat;
     position: relative;
-    text-align: center; 
-  }
+    text-align: center;
+}
 
-  .home-content {
-    background-color: rgba(255, 255, 255, 0.7); 
+.home-content {
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 20px 40px;
     border-radius: 10px;
     max-width: 600px;
-  }
-  
-  .home-content h1 {
+}
+
+.home-content h1 {
     font-size: 3rem;
-    color: #FF7B00; 
+    color: #FF7B00;
     margin-bottom: 10px;
-  }
-  
-  .home-content p {
+}
+
+.home-content p {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 20px;
-  }
-  
-  .home-content button {
+}
+
+.home-content button {
     background-color: var(--ColorPrimarioF);
     border: none;
     padding: 12px 20px;
@@ -46,30 +50,33 @@
     border-radius: 5px;
     color: #fff;
     transition: background-color 0.3s;
-  }
-  
-  .home-content button:hover {
+}
+
+.home-content button:hover {
     background-color: var(--ColorPrimario);
-  }
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
 }
 
-h2{
-    color:#FF9000;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+h2 {
+    color: #FF9000;
+}
+
+/* Estructura principal */
 main {
-    display: flex;    
-    flex-direction: row;    
-    margin-left: 8vw;       
+    display: flex;
+    flex-direction: row;
+    margin-left: 8vw;
     background-color: #FAFAFA;
     margin: 2rem;
 }
 
-section section{   
+/* Cada 'section' con grid interno (si lo usas) */
+section section {
     display: grid;
-    grid-template-columns: repeat(2,1fr);         
+    grid-template-columns: repeat(2, 1fr);
     background-color: #FAFAFA;
     gap: 10vh;
 }
@@ -77,44 +84,52 @@ section section{
 section div {
     font-family: 'Merriweather', serif;
 }
+
+/* Carrito a la derecha */
 aside {
     position: sticky;
     top: 0;
     left: 73vw;
     width: 20vw;
-    height: 100vh;      
+    height: 100vh;
     background-color: #fefefe;
-    display: none;    
+    display: none; /* se muestra dinámicamente con JS */
     border-left: 1px solid #ccc;
     padding: 15px;
 }
 
+/* Se oculta lista de órdenes hasta que haya algo */
 .ordenesActuales {
     display: none;
 }
+
 .ordenesActuales ul li {
-    color: black;        
-    list-style: decimal;     
+    color: black;
+    list-style: decimal;
     margin-left: 1rem;
-  }
-  nav{
+}
+
+/* Barra de navegación lateral */
+nav {
     margin-left: 0vh;
     margin-top: 2vh;
     display: flex;
     flex-direction: column;
-    position:sticky;
+    position: sticky;
     top: 5vh;
     gap: 3vh;
     width: 8vw;
     height: 100vh;
 }
-nav img{
+
+nav img {
     border-radius: 30px;
     width: 4vw;
     height: 8vh;
     object-fit: cover;
 }
-nav a{
+
+nav a {
     color: #808080;
     justify-content: center;
     text-align: center;
@@ -127,49 +142,61 @@ nav a{
     cursor: pointer;
     transition: 0.3s ease;
 }
-nav a p{
+
+nav a p {
     justify-self: center;
     font-size: x-large;
 }
-nav a:hover, nav button:hover{
+
+nav a:hover,
+nav button:hover {
     background-color: var(--ColorPrimarioF);
     color: var(--ColorPrimario);
     transform: scale(1.05);
 }
-#menu {
-    margin-top: 1vh; 
-    margin-left: 5vh;
 
+/* Sección menú */
+#menu {
+    margin-top: 1vh;
+    margin-left: 5vh;
 }
-.categoriasMenu{
+
+/* Botones de categoría */
+.categoriasMenu {
     display: flex;
     flex-direction: row;
-    /*position: sticky;
-    top: 0;                     Descomentar para fijar, se ve mal
-    padding: 20px;*/
     gap: 1vw;
     background-color: #FAFAFA;
 }
-.categoriasMenu button{
+
+.categoriasMenu button {
     border-color: transparent;
     background-color: #EBEBEB;
-    border-radius: 20px; 
+    border-radius: 20px;
     padding: 10px 15px;
     cursor: pointer;
     transition: 0.2s;
 }
-.categoriasMenu button:hover{
+
+.categoriasMenu button:hover {
     transform: scale(1.05);
     background-color: var(--ColorPrimario);
 }
-#itemsMenu{
-    display: flex;
+
+/* === Aquí adaptamos el contenedor de platillos al nuevo #itemsMenu === */
+
+/* Contenedor de productos dinámicos */
+#itemsMenu {
+    display: flex;             /* o display: grid si prefieres */
     flex-direction: column;
-    gap:15px;
+    gap: 15px;
     padding: 15px;
     margin-bottom: 1vh;
+    background-color: #FAFAFA; /* si deseas un color de fondo */
 }
-#itemsMenu button{
+
+/* Cada "button" que generas para un producto */
+#itemsMenu button {
     display: flex;
     flex-direction: column;
     width: 26vw;
@@ -181,40 +208,51 @@ nav a:hover, nav button:hover{
     text-align: center;
     transition: 0.2s ease;
 }
-#itemsMenu button div{
+
+/* Estructura interna del producto */
+#itemsMenu button div {
     display: flex;
     flex-direction: row;
 }
-#itemsMenu button div div{
+
+#itemsMenu button div div {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     width: 20vw;
 }
-#itemsMenu button img{
+
+/* Imagen del producto */
+#itemsMenu button img {
     border-radius: 10px;
     width: 12vw;
     height: 15vh;
     object-fit: cover;
 }
-#itemsMenu button:hover{
+
+/* Hover en cada "card" */
+#itemsMenu button:hover {
     transform: scale(1.05);
     background-color: var(--ColorPrimario);
 }
+
 #itemsMenu button span {
     margin-top: 0.7vh;
-    font-size: 2vh; 
-    color: #333; 
-    line-height: 1.4; 
-    text-align: center; 
-    padding: 5px; 
+    font-size: 2vh;
+    color: #333;
+    line-height: 1.4;
+    text-align: center;
+    padding: 5px;
 }
 
+/* Efecto smooth al saltar con links ancla */
 html {
     scroll-behavior: smooth;
 }
-aside button{
+
+/* Estilos para el botón del aside */
+aside button {
     border: none;
     background-color: var(--ColorPrimarioF);
     padding: 10px;
@@ -224,39 +262,82 @@ aside button{
     text-align: center;
     transition: 0.2s ease;
 }
-aside button:hover{
+
+aside button:hover {
     transform: scale(1.05);
     background-color: var(--ColorPrimario);
 }
-@media (max-width: 800px){
-    section section{
+
+/* Ajustes responsivos */
+@media (max-width: 800px) {
+    section section {
         gap: 0;
         width: 50vw;
     }
-    .itemsMenu button{
-    
-width: 30vw;
-    
-justify-self: center;
-    }
-        .itemsMenu button div{
-        flex-direction:column
-    }
-    main{
-        margin: 0;
-    }
-    span{
-        display:none;
-    }
-    .itemsMenu button img{
-        width: 27vw;
-    }
-    .categoriasMenu{
-        display: unset;
-    }
+
+    #itemsMenu button {
+        width: 30vw;
+        justify-self: center;
     }
 
-#pizzas,#papadias,#hamburguesas,#papadias{
+    #itemsMenu button div {
+        flex-direction: column;
+    }
+
+    #itemsMenu button img {
+        width: 27vw;
+    }
+
+    .categoriasMenu {
+        display: unset;
+    }
+
+    main {
+        margin: 0;
+    }
+
+    span {
+        display: none;
+    }
+}
+
+/* Secciones ancla (IDs) */
+#pizzas,
+#papadias,
+#hamburguesas,
+#bebidas {
     margin-bottom: 3vh;
     margin-top: 3vh;
+}
+
+/* ====== Modal (Pop-up) para datos del cliente ====== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px; 
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border: none;
+    background: none;
 }
