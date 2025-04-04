@@ -35,7 +35,7 @@ window.onload = () => {
 
   function dibujarProductos(productos) {
     const container = document.getElementById("itemsMenu");
-        container.innerHTML = ""; 
+    container.innerHTML = ""; 
     itemsMenuContainer.innerHTML = ""; 
 
     productos.forEach(prod => {
