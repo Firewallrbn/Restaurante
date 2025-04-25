@@ -50,7 +50,7 @@ window.onload = () => {
             const button = document.createElement("button");
             button.innerHTML = `
               <div>
-                <img src="${p.imagen}" alt="${p.nombre}">
+                <img src="/static/${p.imagen}" alt="${p.nombre}">
                 <div>
                   <p>${p.nombre}</p>
                   <span>$${p.precio}</span>
