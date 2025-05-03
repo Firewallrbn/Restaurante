@@ -1,210 +1,288 @@
 [
-    {
-      "id": 1,
+  {
+    "model": "menu.Platillo",
+    "pk": 1,
+    "fields": {
       "nombre": "Pizza hawaiana",
       "descripcion": "Nuestra Pizza Hawaiana incluye piña, jamón, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 8.99,
-      "imagen": "Imagenes/pizza-hawaiana.jpg",
+      "ruta_imagen": "Imagenes/pizza-hawaiana.jpg",
       "categoria": "Pizza"
-    },
-    {
-      "id": 2,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 2,
+    "fields": {
       "nombre": "Pizza pollo y champiñones",
       "descripcion": "Nuestra Pizza de Pollo y Champiñones incluye pollo a la parrilla, champiñones frescos, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 10.99,
-      "imagen": "Imagenes/pizza-pollochampinones.webp",
+      "ruta_imagen": "Imagenes/pizza-pollochampinones.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 3,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 3,
+    "fields": {
       "nombre": "Pizza de pepperoni",
       "descripcion": "Nuestra Pizza de Pepperoni incluye pepperoni, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 12.99,
-      "imagen": "Imagenes/pizza-pepperoni.webp",
+      "ruta_imagen": "Imagenes/pizza-pepperoni.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 4,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 4,
+    "fields": {
       "nombre": "Pizza Vegetariana",
       "descripcion": "Nuestras Pizza Vegetariana incluyen champiñones, verduras frescas como: cebolla, pimentón verde, tomate y aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 8.5,
-      "imagen": "Imagenes/pizza-vegetariana.webp",
+      "ruta_imagen": "Imagenes/pizza-vegetariana.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 5,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 5,
+    "fields": {
       "nombre": "Pizza Italiana",
       "descripcion": "Nuestra Pizza Italiana incluye pepperoni, salchicha italiana, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 9.5,
-      "imagen": "Imagenes/pizza-italiana.webp",
+      "ruta_imagen": "Imagenes/pizza-italiana.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 6,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 6,
+    "fields": {
       "nombre": "Pizza Jamón",
       "descripcion": "Nuestra Pizza de Jamón incluye jamón, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 11,
-      "imagen": "Imagenes/pizza-jamon.webp",
+      "ruta_imagen": "Imagenes/pizza-jamon.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 7,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 7,
+    "fields": {
       "nombre": "Pizza Pollo BBQ",
       "descripcion": "Nuestra Pizza de Pollo BBQ incluye pollo a la parrilla, salsa BBQ, cebolla caramelizada, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 11.5,
-      "imagen": "Imagenes/pizza-pollobbq.webp",
+      "ruta_imagen": "Imagenes/pizza-pollobbq.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 8,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 8,
+    "fields": {
       "nombre": "Pizza Pomodoro",
       "descripcion": "Nuestra Pizza Pomodoro incluye salsa de tomate fresco, albahaca, queso mozzarella, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 9.25,
-      "imagen": "Imagenes/pizza-pomodoro.webp",
+      "ruta_imagen": "Imagenes/pizza-pomodoro.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 9,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 9,
+    "fields": {
       "nombre": "Pizza Ranch Pollo Tocineta",
       "descripcion": "Nuestra Pizza Ranch Pollo Tocineta incluye pollo a la parrilla, tocineta, salsa ranch, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 13.5,
-      "imagen": "Imagenes/pizza-ranchpollotocineta.webp",
+      "ruta_imagen": "Imagenes/pizza-ranchpollotocineta.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 10,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 10,
+    "fields": {
       "nombre": "Pizza The Works",
       "descripcion": "Nuestra Pizza The Works incluye pepperoni, salchicha italiana, jamón, champiñones, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 14,
-      "imagen": "Imagenes/pizza-theWorks.webp",
+      "ruta_imagen": "Imagenes/pizza-theWorks.webp",
       "categoria": "Pizza"
-    },
-    {
-      "id": 11,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 11,
+    "fields": {
       "nombre": "Papadias italiana",
       "descripcion": "Nuestra Papadia Italiana incluye pepperoni, salchicha italiana, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 11.99,
-      "imagen": "Imagenes/papadias-italiana.webp",
+      "ruta_imagen": "Imagenes/papadias-italiana.webp",
       "categoria": "Papadia"
-    },
-    {
-      "id": 12,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 12,
+    "fields": {
       "nombre": "Papadia Jamon con Champiñones",
       "descripcion": "Nuestra Papadia Jamón con Champiñones incluye jamón, champiñones frescos, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 8.5,
-      "imagen": "Imagenes/papadias-jamoncham.webp",
+      "ruta_imagen": "Imagenes/papadias-jamoncham.webp",
       "categoria": "Papadia"
-    },
-    {
-      "id": 13,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 13,
+    "fields": {
       "nombre": "Papadia Pollo BBQ",
       "descripcion": "Nuestra Papadia Pollo BBQ incluye pollo a la parrilla, salsa BBQ, cebolla caramelizada, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 9.25,
-      "imagen": "Imagenes/papadias-pollobbq.webp",
+      "ruta_imagen": "Imagenes/papadias-pollobbq.webp",
       "categoria": "Papadia"
-    },
-    {
-      "id": 14,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 14,
+    "fields": {
       "nombre": "Papadia vegetariana",
       "descripcion": "Nuestra Papadia Vegetariana incluye champiñones, verduras frescas como: cebolla, pimentón verde, tomate y aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 8.75,
-      "imagen": "Imagenes/papadias-vegetariana.webp",
+      "ruta_imagen": "Imagenes/papadias-vegetariana.webp",
       "categoria": "Papadia"
-    },
-    {
-      "id": 15,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 15,
+    "fields": {
       "nombre": "Papadia Combo",
       "descripcion": "Nuestra Papadia Combo incluye una combinación de ingredientes como pepperoni, salchicha italiana, jamón, champiñones, cebolla, pimentón verde, aceitunas negras, queso que estira, masa fresca y una combinación en muchos tamaños que debes descubrir hoy mismo. ¿Estás listo?",
       "precio": 14.5,
-      "imagen": "Imagenes/papadias-combo.png",
+      "ruta_imagen": "Imagenes/papadias-combo.png",
       "categoria": "Papadia"
-    },
-    {
-      "id": 16,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 16,
+    "fields": {
       "nombre": "Hamburguesa Doble",
       "descripcion": "Nuestra Hamburguesa Doble incluye dos jugosas carnes de res, queso, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 9.99,
-      "imagen": "Imagenes/ham-doble.png",
+      "ruta_imagen": "Imagenes/ham-doble.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 17,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 17,
+    "fields": {
       "nombre": "Hamburguesa Normal",
       "descripcion": "Nuestra Hamburguesa Normal incluye una jugosa carne de res, queso, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 7.99,
-      "imagen": "Imagenes/ham-normal.png",
+      "ruta_imagen": "Imagenes/ham-normal.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 18,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 18,
+    "fields": {
       "nombre": "Hamburguesa Normal Grande",
       "descripcion": "Nuestra Hamburguesa Normal Grande incluye una jugosa carne de res, queso, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 8.99,
-      "imagen": "Imagenes/ham-normalgrande.png",
+      "ruta_imagen": "Imagenes/ham-normalgrande.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 19,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 19,
+    "fields": {
       "nombre": "Hamburguesa de Pollo",
       "descripcion": "Nuestra Hamburguesa de Pollo incluye una jugosa pechuga de pollo, queso, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 8.5,
-      "imagen": "Imagenes/ham-pollo.png",
+      "ruta_imagen": "Imagenes/ham-pollo.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 20,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 20,
+    "fields": {
       "nombre": "Hamburguesa de Queso",
       "descripcion": "Nuestra Hamburguesa de Queso incluye una jugosa carne de res, queso derretido, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 8.25,
-      "imagen": "Imagenes/ham-queso.png",
+      "ruta_imagen": "Imagenes/ham-queso.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 21,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 21,
+    "fields": {
       "nombre": "Hamburguesa Queso Tocineta",
       "descripcion": "Nuestra Hamburguesa Queso Tocineta incluye una jugosa carne de res, queso derretido, tocineta crujiente, lechuga, tomate, cebolla, pepinillos y nuestra salsa especial. ¿Estás listo?",
       "precio": 10.5,
-      "imagen": "Imagenes/ham-quesotocineta.png",
+      "ruta_imagen": "Imagenes/ham-quesotocineta.png",
       "categoria": "Hamburguesa"
-    },
-    {
-      "id": 22,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 22,
+    "fields": {
       "nombre": "Agua",
       "descripcion": "Refrescante agua embotellada. Perfecta para acompañar cualquier comida. ¿Estás listo?",
       "precio": 1.5,
-      "imagen": "Imagenes/gas-agua.webp",
+      "ruta_imagen": "Imagenes/gas-agua.webp",
       "categoria": "Bebida"
-    },
-    {
-      "id": 23,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 23,
+    "fields": {
       "nombre": "Coca-Cola",
       "descripcion": "Refrescante Coca-Cola en lata o botella. Perfecta para acompañar cualquier comida. ¿Estás listo?",
       "precio": 2,
-      "imagen": "Imagenes/gas-coca.webp",
+      "ruta_imagen": "Imagenes/gas-coca.webp",
       "categoria": "Bebida"
-    },
-    {
-      "id": 24,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 24,
+    "fields": {
       "nombre": "Fuze Tea",
       "descripcion": "Refrescante Fuze Tea en lata o botella. Perfecta para acompañar cualquier comida. ¿Estás listo?",
       "precio": 1.75,
-      "imagen": "Imagenes/gas-fuze.webp",
+      "ruta_imagen": "Imagenes/gas-fuze.webp",
       "categoria": "Bebida"
-    },
-    {
-      "id": 25,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 25,
+    "fields": {
       "nombre": "Quatro",
       "descripcion": "Refrescante Quatro en lata o botella. Perfecta para acompañar cualquier comida. ¿Estás listo?",
       "precio": 1.75,
-      "imagen": "Imagenes/gas-quatro.webp",
+      "ruta_imagen": "Imagenes/gas-quatro.webp",
       "categoria": "Bebida"
-    },
-    {
-      "id": 26,
+    }
+  },
+  {
+    "model": "menu.Platillo",
+    "pk": 26,
+    "fields": {
       "nombre": "Sprite",
       "descripcion": "Refrescante Sprite en lata o botella. Perfecta para acompañar cualquier comida. ¿Estás listo?",
       "precio": 2,
-      "imagen": "Imagenes/gas-sprite.webp",
+      "ruta_imagen": "Imagenes/gas-sprite.webp",
       "categoria": "Bebida"
     }
-  ]
+  }
+]
