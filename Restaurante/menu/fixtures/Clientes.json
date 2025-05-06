@@ -1,0 +1,12 @@
+[
+    {
+    "model": "menu.CustomUser",
+    "pk": 1,
+    "fields": {
+      "Direccion": "China",
+      "Username":"Laopi",
+      "Password":"tongshinlien",
+      "numero":232
+    }
+  }
+]
