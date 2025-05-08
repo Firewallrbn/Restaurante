@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: mi-api-django
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn Restaurante.wsgi"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: Restaurante.settings
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mi-db
+          property: connectionString
+      - key: DEBUG
+        value: "False"
+
+databases:
+  - name: Base-Restaurante
+    plan: free
