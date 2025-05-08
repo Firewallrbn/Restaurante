@@ -3,7 +3,10 @@ services:
     name: mi-api-django
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+
     startCommand: "gunicorn Restaurante.wsgi"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
