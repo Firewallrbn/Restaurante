@@ -1,11 +1,11 @@
 window.onload = () => {
 
-  const URL_MENU = "https://script.google.com/macros/s/AKfycbwpqaC6RhJ_QFBglo4GsSPdkRn5CFG0QrdCob2knohcUccdV5kKFlL6do7yJBDjGutc/exec"; 
+  const URL_MENU = "https://restaurante-yfuf.onrender.com/api/menu"; 
   
  
   const URL_PEDIDOS = "https://script.google.com/macros/s/AKfycbwpqaC6RhJ_QFBglo4GsSPdkRn5CFG0QrdCob2knohcUccdV5kKFlL6do7yJBDjGutc/exec";
 
-  const itemsMenuContainer = document.getElementById("itemsMenu");
+  const itemsMenuContainer = document.getElementById("itemsMenu");    
   const asideElement = document.querySelector("aside");
   const ordenesActualesDiv = document.querySelector(".ordenesActuales");
   const totalElement = document.getElementById("total");

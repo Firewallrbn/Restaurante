@@ -17,6 +17,7 @@ class Pedido(models.Model):
     platillos = models.ManyToManyField(Platillo)
     precio_total = models.DecimalField(max_digits=8, decimal_places=2)
     fecha = models.DateTimeField(auto_now_add=True)
+    Entregado = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Pedido #{self.id} de {self.cliente.username}"
