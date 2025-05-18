@@ -135,3 +135,5 @@ STORAGES = {
     },
 }
 
+LOGIN_URL = '/login/'              # dónde enviar a los no autenticados
+LOGIN_REDIRECT_URL = '/pedidos/'   # a dónde mandar al hacer login (opcional)

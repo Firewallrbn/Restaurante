@@ -11,7 +11,12 @@ urlpatterns = [
     path('api/pedido/', views.crear_pedido, name='crear_pedido'),
     path('pedidos/', views.lista_pedidos, name='lista_pedidos'),
     path('pedidos/entregar/<int:pedido_id>/', views.marcar_entregado, name='marcar_entregado'),
-     path('pedidos/', views.lista_pedidos, name='lista_pedidos'),
-    path('pedidos/entregar/<int:pedido_id>/', views.marcar_entregado,
-         name='marcar_entregado'),
+    path('pedidos/', views.lista_pedidos, name='lista_pedidos'),
+    path(
+        'login/',
+        auth_views.LoginView.as_view(
+            template_name='login.html'   # <-- apunta al fichero existente
+        ),
+        name='login'
+    ),
 ]
