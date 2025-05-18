@@ -63,7 +63,8 @@ def crear_pedido(request):
 @login_required
 def lista_pedidos(request):
     pedidos = Pedido.objects.select_related('cliente').all().order_by('-fecha')
-    return render(request, 'menu/pedidos.html', {'pedidos': pedidos})
+    return render(request, 'pedidos.html', {'pedidos': pedidos})
+
 
 @login_required
 def marcar_entregado(request, pedido_id):
