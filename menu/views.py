@@ -4,7 +4,8 @@ from .models import Platillo, Pedido,CustomUser
 import json
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required  
-from django.shortcuts import redirect                       
+from django.shortcuts import redirect  
+from django.db.models import Q                       
 
 def index(request):
     return render(request, 'index.html') 
@@ -62,8 +63,23 @@ def crear_pedido(request):
     
 @login_required
 def lista_pedidos(request):
-    pedidos = Pedido.objects.select_related('cliente').all().order_by('-fecha')
-    return render(request, 'pedidos.html', {'pedidos': pedidos})
+    # 1. Traemos TODOS los pedidos
+    pedidos = Pedido.objects.select_related('cliente').order_by('-fecha')
+
+    # 2. ¿El usuario escribió algo en el cuadro de búsqueda?
+    q = request.GET.get('q', '').strip()
+    if q:
+        #   • Busca por nombre, apellido o username (ignora mayúsculas/minúsculas)
+        pedidos = pedidos.filter(
+            Q(cliente__first_name__icontains=q) |
+            Q(cliente__last_name__icontains=q)  |
+            Q(cliente__username__icontains=q)
+        )
+
+    return render(request, 'pedidos.html', {
+        'pedidos': pedidos,
+        'q': q,                # para que el input conserve el texto buscado
+    })
 
 
 @login_required

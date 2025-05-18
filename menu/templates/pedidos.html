@@ -16,6 +16,14 @@
 <h1 class="titulo-panel">Administración de pedidos</h1>
 
 <div class="contenedor-tabla">
+    <form method="get" class="buscador">
+    <input  type="text"
+            name="q"
+            placeholder="Buscar cliente…"
+            value="{{ q }}">
+    <button>Buscar</button>
+</form>
+
 
     <!-- Columna 1 : pedidos pendientes -->
     <table class="tabla">
