@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración de pedidos</title>
+
+    <!-- tu hoja global de estilos (la que ya existe) -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+
+    <!-- hoja exclusiva para el panel de pedidos -->
+    <link rel="stylesheet" href="{% static 'menu/pedidos.css' %}" />
+</head>
+<body>
+
+<h1 class="titulo-panel">Administración de pedidos</h1>
+
+<div class="contenedor-tabla">
+
+    <!-- Columna 1 : pedidos pendientes -->
+    <table class="tabla">
+        <thead>
+            <tr><th colspan="4" class="cabecera">Por entregar</th></tr>
+            <tr>
+                <th>ID</th><th>Cliente</th><th>Total</th><th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in pedidos %}
+            {% if not p.Entregado %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.cliente.first_name }}</td>
+                <td>${{ p.precio_total }}</td>
+                <td>
+                    <form action="{% url 'marcar_entregado' p.id %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn-entregar">Marcar entregado</button>
+                    </form>
+                </td>
+            </tr>
+            {% endif %}
+        {% empty %}
+            <tr><td colspan="4">No hay pedidos pendientes.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Columna 2 : entregados -->
+    <table class="tabla">
+        <thead>
+            <tr><th colspan="3" class="cabecera">Entregados</th></tr>
+            <tr>
+                <th>ID</th><th>Cliente</th><th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for p in pedidos %}
+            {% if p.Entregado %}
+            <tr>
+                <td>{{ p.id }}</td>
+                <td>{{ p.cliente.first_name }}</td>
+                <td>${{ p.precio_total }}</td>
+            </tr>
+            {% endif %}
+        {% empty %}
+            <tr><td colspan="3">No hay pedidos entregados.</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

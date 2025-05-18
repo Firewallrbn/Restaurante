@@ -1,0 +1,64 @@
+/* --- paleta heredada --- */
+:root{
+  --ColorPrimario:#f4a261;   /* pale orange */
+  --ColorPrimarioF:#e07b3c;
+}
+
+/* --- estructura general --- */
+body{font-family:Arial,Helvetica,sans-serif;background:#fafafa;}
+
+.titulo-panel{
+  text-align:center;
+  margin:1.5rem 0;
+  color:var(--ColorPrimarioF);
+  font-size:2.2rem;
+}
+
+/* --- contenedor con dos columnas (tablas) --- */
+.contenedor-tabla{
+  display:flex;
+  gap:4rem;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:0 2rem 3rem;
+}
+
+/* --- tablas --- */
+.table, .tabla{
+  width:32rem;           /* se adapta en responsivo abajo   */
+  border-collapse:collapse;
+  background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+
+.cabecera{
+  background:var(--ColorPrimarioF);
+  color:#fff;
+  font-size:1.1rem;
+}
+
+th,td{
+  padding:.7rem;
+  text-align:center;
+  border-bottom:1px solid #ddd;
+}
+
+tr:nth-child(even) td{background:#f5f5f5;}
+
+/* --- botón entregar --- */
+.btn-entregar{
+  border:none;
+  padding:.35rem .9rem;
+  background:var(--ColorPrimario);
+  color:#fff;
+  border-radius:6px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.btn-entregar:hover{background:var(--ColorPrimarioF);}
+
+/* --- responsivo --- */
+@media(max-width:900px){
+  .tabla{width:90vw;}
+}
