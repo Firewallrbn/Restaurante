@@ -1,54 +1,57 @@
+/* static/restaurante.js  */
 window.onload = () => {
 
-  const URL_MENU = "https://restaurante-yfuf.onrender.com/api/menu"; 
-  
- 
-  const URL_PEDIDOS = "https://script.google.com/macros/s/AKfycbwpqaC6RhJ_QFBglo4GsSPdkRn5CFG0QrdCob2knohcUccdV5kKFlL6do7yJBDjGutc/exec";
+  /* 1️⃣  Rutas ------------------------------ */
+  const URL_MENU    = "https://restaurante-yfuf.onrender.com/api/menu";
+  /* ‼️  ahora apuntamos al endpoint de Django */
+  const URL_PEDIDOS = "https://restaurante-yfuf.onrender.com/api/pedido/";
 
-  const itemsMenuContainer = document.getElementById("itemsMenu");    
-  const asideElement = document.querySelector("aside");
+
+  /* 2️⃣  Selectores / variables ------------- */
+  const itemsMenuContainer = document.getElementById("itemsMenu");
+  const asideElement       = document.querySelector("aside");
   const ordenesActualesDiv = document.querySelector(".ordenesActuales");
-  const totalElement = document.getElementById("total");
-  const pedidoInput = document.getElementById("pedidoInput");
-  const ordenActualList = document.getElementById("ordenesActuales");
-  const realizarPedidoBtn = document.getElementById("realizarPedido");
-  const modal = document.getElementById("modal");
-  const closeModalBtn = document.getElementById("close-modal");
-  const formCliente = document.getElementById("formCliente");
+  const totalElement       = document.getElementById("total");
+  const pedidoInput        = document.getElementById("pedidoInput");
+  const ordenActualList    = document.getElementById("ordenesActuales");
+  const realizarPedidoBtn  = document.getElementById("realizarPedido");
+  const modal              = document.getElementById("modal");
+  const closeModalBtn      = document.getElementById("close-modal");
+  const formCliente        = document.getElementById("formCliente");
 
-
-  asideElement.style.display = "none";
+  asideElement.style.display       = "none";
   ordenesActualesDiv.style.display = "none";
 
   const ordenes = {};
-  let total = 0;
-  let catActual="";
+  let   total   = 0;
+  let   catActual = "";
 
+
+  /* 3️⃣  Carga del menú --------------------- */
   fetch(URL_MENU)
-    .then(res => res.json())
-    .then(data => {
-      const productos = data.data;
-      dibujarProductos(productos);
-    })
-    .catch(error => console.error("Error al obtener menú:", error));
+    .then(r => r.json())
+    .then(({data}) => dibujarProductos(data))
+    .catch(err => console.error("Error al obtener menú:", err));
 
 
+  /* 4️⃣  Render de productos --------------- */
   function dibujarProductos(productos) {
-    const container = document.getElementById("itemsMenu");
-    container.innerHTML = ""; 
-    itemsMenuContainer.innerHTML = ""; 
+    const container = itemsMenuContainer;
+    container.innerHTML = "";
 
     productos.forEach(prod => {
-      if(catActual!=prod.categoria){ //Revisamos si la categoria es diferente a la anterior
+      if (catActual !== prod.categoria) {
         const h2 = document.createElement("h2");
-        h2.textContent = prod.categoria+"s";
+        h2.textContent = prod.categoria + "s";
         container.appendChild(h2);
+
         const section = document.createElement("section");
-        section.classList.add(prod.categoria+"s");
+        section.classList.add(prod.categoria + "s");
+
         productos.forEach(p => {
-          if (p.categoria === prod.categoria) { //Se crean los botones hasta que la categoria cambie
-            const button = document.createElement("button");
-            button.innerHTML = `
+          if (p.categoria === prod.categoria) {
+            const btn = document.createElement("button");
+            btn.innerHTML = `
               <div>
                 <img src="/static/${p.imagen}" alt="${p.nombre}">
                 <div>
@@ -58,142 +61,125 @@ window.onload = () => {
               </div>
               <span>${p.descripcion}</span>
             `;
-            button.addEventListener("click", () => {//boton que agrega al carrito
-              const itemName = button.querySelector("p").textContent; 
-              const itemPrice = parseFloat(button.querySelector("span").textContent.replace("$", ""));
-  
-              if (ordenes[itemName]) {
-                  ordenes[itemName].cantidad++;
-                  ordenes[itemName].elementoLi.querySelector(".cantidad").textContent = `x${ordenes[itemName].cantidad}`;
-                  ordenes[itemName].elementoLi.querySelector(".precio").textContent = `$${(ordenes[itemName].cantidad * itemPrice).toFixed(2)}`;
-              } else {
-                  const listItem = document.createElement("li");
-                  listItem.innerHTML = `
-                      ${itemName} <span class="cantidad">x1</span> - <span class="precio">$${itemPrice.toFixed(2)}</span>
-                      <button class="borrar">-</button>
-                  `;
-                  ordenActualList.appendChild(listItem);
-  
-                  ordenes[itemName] = {
-                      cantidad: 1,
-                      precioUnitario: itemPrice,
-                      elementoLi: listItem
-                  };
-  
-                  listItem.querySelector(".borrar").addEventListener("click", () => {
-                      total -= ordenes[itemName].cantidad * ordenes[itemName].precioUnitario;
-                      totalElement.textContent = `Total: $${total.toFixed(2)}`;
-  
-                      delete ordenes[itemName];
-                      listItem.remove();
-  
-                      actualizarPedido();
-  
-                      if (Object.keys(ordenes).length === 0) {
-                          asideElement.style.display = "none";
-                          ordenesActualesDiv.style.display = "none";
-                      }
-                  });
-              }
-  
-              total += itemPrice;
-              totalElement.textContent = `Total: $${total.toFixed(2)}`;
-              actualizarPedido();
-  
-              asideElement.style.display = "block";
-              ordenesActualesDiv.style.display = "block";
-          });
-          
-            container.appendChild(button);
-            section.appendChild(button);
+            btn.addEventListener("click", () => agregarAlCarrito(p, btn));
+            section.appendChild(btn);
           }
         });
-        container.appendChild(section);  
-      }
-      catActual=prod.categoria;
 
+        container.appendChild(section);
+        catActual = prod.categoria;
+      }
     });
   }
 
-  function actualizarPedido() {
-    const pedidoArray = Object.keys(ordenes).map(item => ({
-      nombre: item,
-      cantidad: ordenes[item].cantidad,
-      precio: ordenes[item].precioUnitario * ordenes[item].cantidad
-    }));
+  /* 5️⃣  Lógica de carrito ------------------ */
+  function agregarAlCarrito(prod, button) {
+    const itemName  = prod.nombre;
+    const itemPrice = prod.precio;
 
-    const pedidoTexto = pedidoArray
-      .map(p => `${p.nombre} x${p.cantidad} - $${p.precio.toFixed(2)}`)
-      .join(", ");
-    pedidoInput.value = pedidoTexto;
+    if (ordenes[itemName]) {
+      ordenes[itemName].cantidad++;
+      actualizarFila(itemName);
+    } else {
+      crearFila(itemName, itemPrice);
+    }
+
+    total += itemPrice;
+    totalElement.textContent = `Total: $${total.toFixed(2)}`;
+    actualizarPedido();
+
+    asideElement.style.display = "block";
+    ordenesActualesDiv.style.display = "block";
+  }
+
+  function crearFila(nombre, precio) {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${nombre} <span class="cantidad">x1</span> - <span class="precio">$${precio.toFixed(2)}</span>
+      <button class="borrar">-</button>
+    `;
+    ordenActualList.appendChild(li);
+
+    ordenes[nombre] = { cantidad: 1, precioUnitario: precio, elementoLi: li };
+
+    li.querySelector(".borrar").addEventListener("click", () => {
+      total -= ordenes[nombre].cantidad * precio;
+      delete ordenes[nombre];
+      li.remove();
+      totalElement.textContent = `Total: $${total.toFixed(2)}`;
+      actualizarPedido();
+
+      if (Object.keys(ordenes).length === 0) {
+        asideElement.style.display = "none";
+        ordenesActualesDiv.style.display = "none";
+      }
+    });
+  }
+
+  function actualizarFila(nombre) {
+    const fila = ordenes[nombre].elementoLi;
+    fila.querySelector(".cantidad").textContent = `x${ordenes[nombre].cantidad}`;
+    fila.querySelector(".precio").textContent =
+      `$${(ordenes[nombre].cantidad * ordenes[nombre].precioUnitario).toFixed(2)}`;
+  }
+
+  function actualizarPedido() {
+    const pedidoTxt = Object.keys(ordenes).map(n => {
+      const o = ordenes[n];
+      return `${n} x${o.cantidad} - $${(o.cantidad * o.precioUnitario).toFixed(2)}`;
+    }).join(", ");
+    pedidoInput.value = pedidoTxt;
   }
 
 
-  realizarPedidoBtn.addEventListener("click", (event) => {
-    event.preventDefault(); 
-    actualizarPedido();     
-    modal.style.display = "block"; // Muestra el modal
+  /* 6️⃣  Modal & envío ---------------------- */
+  realizarPedidoBtn.addEventListener("click", e => {
+    e.preventDefault();
+    actualizarPedido();
+    modal.style.display = "block";
   });
+  closeModalBtn.addEventListener("click", () => modal.style.display = "none");
 
-  closeModalBtn.addEventListener("click", () => {
-    modal.style.display = "none";
-  });
-
-  formCliente.addEventListener("submit", async (event) => {
-    event.preventDefault(); 
-
-    const nombre = document.getElementById("nombre").value.trim();
-    const telefono = document.getElementById("telefono").value.trim();
-    const direccion = document.getElementById("direccion").value.trim();
-      
-
-    const pedidoArray = Object.keys(ordenes).map(item => ({
-      nombre: item,
-      cantidad: ordenes[item].cantidad,
-      precioUnitario: ordenes[item].precioUnitario
-    }));
-
-    const totalPedido = pedidoArray.reduce((acc, item) => acc + (item.precioUnitario * item.cantidad), 0);
+  formCliente.addEventListener("submit", async e => {
+    e.preventDefault();
 
     const pedido = {
-      nombreCliente: nombre,
-      telefonoCliente: telefono,
-      direccionCliente: direccion,
-      listaProductos: pedidoArray,
-      valorTotal: totalPedido
+      nombreCliente   : document.getElementById("nombre").value.trim(),
+      telefonoCliente : document.getElementById("telefono").value.trim(),
+      direccionCliente: document.getElementById("direccion").value.trim(),
+      listaProductos  : Object.keys(ordenes).map(n => ({
+        nombre       : n,
+        cantidad     : ordenes[n].cantidad,
+        precioUnitario: ordenes[n].precioUnitario
+      }))
     };
-    
+    pedido.valorTotal = pedido.listaProductos
+                         .reduce((s,p) => s + p.precioUnitario * p.cantidad, 0);
+
+    /* --- llamada a Django --- */
+    try {
+      const resp = await fetch(URL_PEDIDOS, {
+        method : "POST",
+        headers: { "Content-Type": "application/json" },
+        body   : JSON.stringify(pedido)
+      });
+      if (!resp.ok) throw new Error("Error HTTP " + resp.status);
+    } catch (err) {
+      alert("Hubo un problema al registrar el pedido 😥");
+      console.error(err);
+      return;
+    }
+
+    /* 7️⃣  Limpieza & feedback --------------- */
     modal.style.display = "none";
     alert("¡Pedido enviado con éxito!");
-    
-    for (const key in ordenes) {
-      if (ordenes.hasOwnProperty(key)) {
-        ordenes[key].elementoLi.remove(); 
-      }
-    }
+
+    ordenActualList.innerHTML = "";
     Object.keys(ordenes).forEach(k => delete ordenes[k]);
     total = 0;
     totalElement.textContent = "Total: $0";
     pedidoInput.value = "";
-
     asideElement.style.display = "none";
     ordenesActualesDiv.style.display = "none";
-
-    try {
-      const response = await fetch(URL_PEDIDOS, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(pedido)
-      });
-  
-      const data = await response.json();
-      
-
-
-    } catch (error) {
-    }
   });
 };
