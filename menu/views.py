@@ -20,7 +20,8 @@ def MostrarPlatillos(request): #Solo para pruebas
     resultado = "\n".join([f"{P.nombre} - {P.descripcion}" for P in platillos])
     return HttpResponse(f"<pre>{resultado}</pre>")
 
-
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def api_menu(request):
     datos = Platillo.objects.all()
     resultado = []
