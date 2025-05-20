@@ -6,7 +6,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required  
 from django.shortcuts import redirect  
 from django.db.models import Q                       
-
+from rest_framework.views import APIView, permission_classes
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response  
 def index(request):
     return render(request, 'index.html') 
 

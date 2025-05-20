@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['.onrender.com', '127.0.0.1', 'localhost']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'rest_framework',
+    'rest_framework_simplejwt',  
     'menu',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -101,7 +102,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+REST_FRAMEWORK = { 
+'DEFAULT_AUTHENTICATION_CLASSES': ( 
+'rest_framework_simplejwt.authentication.JWTAuthentication', 
+), 
+} 
+SIMPLE_JWT = { 
+'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10), #Puedes editar los tiempos 
+'REFRESH_TOKEN_LIFETIME': timedelta(days=1), 
+'AUTH_HEADER_TYPES': ('Bearer',),   
+} 
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
