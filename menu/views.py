@@ -5,7 +5,14 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required  
 from django.shortcuts import redirect  
-from django.db.models import Q                       
+from django.db.models import Q         
+from rest_framework_authentication import token_authentication
+from rest_framework.permissions import IsAuthenticated
+form rest_framework.decorators import authentication_classes, permission_classes         
+from django.shortcuts import redirect
+
+def Redirect(request):
+    return redirect('/menu/')  
 
 def index(request):
     return render(request, 'index.html') 
@@ -18,7 +25,8 @@ def MostrarPlatillos(request): #Solo para pruebas
     resultado = "\n".join([f"{P.nombre} - {P.descripcion}" for P in platillos])
     return HttpResponse(f"<pre>{resultado}</pre>")
 
-
+@authentication_classes([token_authentication])
+@permission_classes([IsAuthenticated])
 def api_menu(request):
     datos = Platillo.objects.all()
     resultado = []
@@ -62,6 +70,8 @@ def crear_pedido(request):
         return JsonResponse({"mensaje": "Pedido creado con éxito", "id": pedido.id})
     
 @login_required
+@authentication_classes([token_authentication])
+@permission_classes([IsAuthenticated])
 def lista_pedidos(request):
     # 1. Traemos TODOS los pedidos
     pedidos = Pedido.objects.select_related('cliente').order_by('-fecha')
@@ -83,6 +93,8 @@ def lista_pedidos(request):
 
 
 @login_required
+@authentication_classes([token_authentication])
+@permission_classes([IsAuthenticated])
 def marcar_entregado(request, pedido_id):
     pedido = Pedido.objects.get(id=pedido_id)
     pedido.Entregado = True
