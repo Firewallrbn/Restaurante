@@ -5,8 +5,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 urlpatterns = [
     path('', views.index),
     path('contacto/', views.contacto),
-    path('login/', auth_views.LoginView.as_view()),
-    path('api/login/', views.login_user, name='login'),
+    path('login/', views.login_page, name='login_page'),  
+    path('api/login/', TokenObtainPairView.as_view(), name='api_login'),  
     path('prueba/', views.MostrarPlatillos),
     path('api/menu', views.api_menu),
     path('api/pedido/', views.crear_pedido, name='crear_pedido'),
@@ -15,11 +15,4 @@ urlpatterns = [
     path('pedidos/', views.lista_pedidos, name='lista_pedidos'),
     path('api/token/', TokenObtainPairView.as_view()), 
     path('api/token/refresh/', TokenRefreshView.as_view()),
-    path(
-        'login/',
-        auth_views.LoginView.as_view(
-            template_name='login.html'   # <-- apunta al fichero existente
-        ),
-        name='login'
-    ),
 ]
