@@ -21,7 +21,7 @@ def contacto(request):
     return render(request, 'contacto.html')
 
 def login_page(request):
-    return render(request, 'login.html')
+    return render(request, 'registration/login.html')
     
 @api_view(['POST'])
 def login_user(request):
