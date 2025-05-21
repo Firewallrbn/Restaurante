@@ -7,22 +7,40 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect  
 from django.db.models import Q                       
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response  
+from django.contrib.auth import authenticate
+
+
 def index(request):
     return render(request, 'index.html') 
 
 def contacto(request):
     return render(request, 'contacto.html')
 
+@api_view(['POST'])
+def login_user(request):
+    username = request.data.get('username')
+    password = request.data.get('password')
+
+    user = authenticate(username=username, password=password)
+    
+    if user is not None:
+        refresh = RefreshToken.for_user(user)  # Genera el token
+        return Response({
+            'access': str(refresh.access_token),
+            'refresh': str(refresh),
+        })
+    else:
+        return Response({"error": "Credenciales inválidas"}, status=400)
 def MostrarPlatillos(request): #Solo para pruebas
     platillos = Platillo.objects.all()
     resultado = "\n".join([f"{P.nombre} - {P.descripcion}" for P in platillos])
     return HttpResponse(f"<pre>{resultado}</pre>")
 
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
+
 def api_menu(request):
     datos = Platillo.objects.all()
     resultado = []
@@ -66,6 +84,8 @@ def crear_pedido(request):
         return JsonResponse({"mensaje": "Pedido creado con éxito", "id": pedido.id})
     
 @login_required
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def lista_pedidos(request):
     # 1. Traemos TODOS los pedidos
     pedidos = Pedido.objects.select_related('cliente').order_by('-fecha')
@@ -87,6 +107,8 @@ def lista_pedidos(request):
 
 
 @login_required
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def marcar_entregado(request, pedido_id):
     pedido = Pedido.objects.get(id=pedido_id)
     pedido.Entregado = True

@@ -3,9 +3,10 @@ from menu import views
 from django.contrib.auth import views as auth_views
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView 
 urlpatterns = [
-    path('menu/', views.index),
+    path('', views.index),
     path('contacto/', views.contacto),
     path('login/', auth_views.LoginView.as_view()),
+    path('api/login/', views.login_user, name='login'),
     path('prueba/', views.MostrarPlatillos),
     path('api/menu', views.api_menu),
     path('api/pedido/', views.crear_pedido, name='crear_pedido'),
