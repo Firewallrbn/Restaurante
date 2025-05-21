@@ -20,6 +20,9 @@ def index(request):
 def contacto(request):
     return render(request, 'contacto.html')
 
+def login_page(request):
+    return render(request, 'login.html')
+    
 @api_view(['POST'])
 def login_user(request):
     username = request.data.get('username')

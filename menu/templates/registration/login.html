@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>D'oros | Login</title>
     <link rel="stylesheet" href="{% static 'stylesLogin.css' %}">
+    <script src="{% static 'login.js' %}"></script>
 </head>
 
 <body>
@@ -16,8 +17,7 @@
     {% endif %}
 
     <!-- Django redirige aquí con el objeto "form"  -->
-    <form id="login" method="post" action="{% url 'login' %}">
-        {% csrf_token %}
+    <form id="login">
 
         <label for="id_username">Usuario:</label>
         <input type="text"
