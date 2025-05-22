@@ -1,16 +1,14 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Administración de pedidos</title>
-    <script src="{% static 'Api.js' %}"></script>
-    <!-- tu hoja global de estilos (la que ya existe) -->
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
-
-    <!-- hoja exclusiva para el panel de pedidos -->
-    <link rel="stylesheet" href="{% static 'pedidos.css' %}">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>Administración de pedidos</title>
+        <script src="{% static 'Api.js' %}"></script>
+        <script src="{% static 'pedidos.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'styles.css' %}" />
+        <link rel="stylesheet" href="{% static 'pedidos.css' %}">
+    </head>
 <body>
 
 <h1 class="titulo-panel">Administración de pedidos</h1>
