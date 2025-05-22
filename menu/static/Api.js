@@ -1,17 +1,19 @@
-// Este archivo contiene funciones para realizar solicitudes a la API de Django
-export async function fetchAutenticado(url, options = {}) {
-    const token = localStorage.getItem('access_token');
-    
-    // Configuración por defecto
-    const config = {
-      ...options,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        ...options.headers
-      }
-    };
+async function fetchAutenticado(url, options = {}) {
+  const token = localStorage.getItem('access_token');
   
+  if (!token) {
+    window.location.href = '/login/';
+    throw new Error('Token no encontrado');
+  }
+
+  const config = {
+    ...options,
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json',
+      ...options.headers
+    }
+  };
     try {
       const response = await fetch(url, config);
 
