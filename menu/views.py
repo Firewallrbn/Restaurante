@@ -3,13 +3,16 @@ from django.http import HttpResponse, JsonResponse
 from .models import Platillo, Pedido,CustomUser
 import json
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required  
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.shortcuts import redirect  
 from django.db.models import Q                       
 
 def index(request):
     return render(request, 'index.html') 
-
+def cerrar_sesion(request):
+    logout(request)  
+    return redirect('/')  
 def contacto(request):
     return render(request, 'contacto.html')
 
