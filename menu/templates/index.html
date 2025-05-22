@@ -19,14 +19,16 @@
     <main>
         <nav>
             <a href="#top"><p>🏠︎</p>Inicio</a>
-            <a href="login"><p>☆</p>Admin</a>
-            <a href="#menu"><p>⌸</p>Menu</a>
+            <a href="pedidos"><p>☆</p>Admin</a>
+            
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}"><p>!</p>Cerrar sesión</a>
+            <a href="pedidos"><p>☆</p>Admin</a>
             {% else %}
             <a href="login"><p>☆</p>Iniciar sesión</a>
+            <a><p>⛶</p>Mesa</a>
             {% endif %}
-
+            <a href="#menu"><p>⌸</p>Menu</a>
             <a href="home-page.html#"><p>◔</p>Historial</a>
             <a href="contacto"><img src="/static/Imagenes/Perfil.png" alt="">Contacto</a>
           </nav>
