@@ -1,25 +1,98 @@
-h1{
-    color: #FF7B00;
-    font-size: 3rem;
+/* static/stylesLogin.css  */
+/* Paleta global que ya vienes usando */
+:root{
+    --ColorPrimario : #f4a261; /* naranja suave  */
+    --ColorPrimarioF: #e07b3c; /* naranja fuerte */
+    --ColorBg       : #fafafa; /* fondo claro    */
+    --ColorTexto    : #333333; /* textos básicos */
+    --Radio         : .75rem;  /* radios globales*/
 }
-body{
 
-    background-color: rgb(200, 200, 228);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap:10vh;
+/* ===== Layout general ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2.5rem;
+    background:linear-gradient(135deg, var(--ColorBg) 0%, #e9eef4 100%);
+}
+
+/* ===== Título ===== */
+h1{
+    font-size:3rem;
+    color:var(--ColorPrimarioF);
+    text-shadow:1px 1px 3px rgba(0,0,0,.08);
+}
+
+/* ===== Card login ===== */
 form{
-    color: orange;
-    background-color: rgba(255, 255, 255, 0.7);
-    display: flex;
-    padding: 20px 40px;
-    border-radius: 10px;
-    flex-direction: column;
-    gap: 3vh;
+    width: min(90%, 420px);
+    background:rgba(255,255,255,.88);
+    padding:2.5rem 3rem;
+    border-radius:var(--Radio);
+    box-shadow:0 4px 20px rgba(0,0,0,.08);
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
 }
-button,input{
-    border-radius: 5px;
-    padding: 10px;
+
+form label{
+    font-weight:bold;
+    color:var(--ColorTexto);
+    margin-bottom:.25rem;
+}
+
+form input{
+    width:100%;
+    padding:.65rem .75rem;
+    border:1px solid #d0d0d0;
+    border-radius:var(--Radio);
+    font-size:1rem;
+    outline:none;
+    transition:border-color .25s ease;
+}
+form input:focus{
+    border-color:var(--ColorPrimarioF);
+}
+
+/* ===== Botón ===== */
+form button{
+    margin-top:.5rem;
+    background:var(--ColorPrimarioF);
+    color:#fff;
+    border:none;
+    padding:.8rem 1rem;
+    font-size:1rem;
+    font-weight:bold;
+    letter-spacing:.3px;
+    border-radius:var(--Radio);
+    cursor:pointer;
+    transition:background .25s ease, transform .15s ease;
+}
+form button:hover{
+    background:var(--ColorPrimario);
+}
+form button:active{
+    transform:scale(.97);
+}
+
+/* ===== Mensaje de error ===== */
+form .error-msg{
+    color:#d92020;
+    font-size:.9rem;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:450px){
+    h1{ font-size:2.2rem; }
+    form{ padding:2rem; }
 }
