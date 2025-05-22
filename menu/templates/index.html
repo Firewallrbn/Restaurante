@@ -18,9 +18,7 @@
     </section>
     <main>
         <nav>
-            <a href="#top"><p>🏠︎</p>Inicio</a>
-            <a href="pedidos"><p>☆</p>Admin</a>
-            
+            <a href="#top"><p>🏠︎</p>Inicio</a>            
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}"><p>!</p>Cerrar sesión</a>
             <a href="pedidos"><p>☆</p>Admin</a>

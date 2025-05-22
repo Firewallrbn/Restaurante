@@ -46,7 +46,7 @@ th,td{
 tr:nth-child(even) td{background:#f5f5f5;}
 
 /* --- botón entregar --- */
-.btn-entregar{
+.btn-entregar, a.button{
   border:none;
   padding:.35rem .9rem;
   background:var(--ColorPrimario);
@@ -55,8 +55,7 @@ tr:nth-child(even) td{background:#f5f5f5;}
   cursor:pointer;
   transition:.2s;
 }
-
-.btn-entregar:hover{background:var(--ColorPrimarioF);}
+.btn-entregar:hover, a.button:hover{background:var(--ColorPrimarioF);}
 
 /* --- responsivo --- */
 @media(max-width:900px){
