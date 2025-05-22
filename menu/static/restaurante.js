@@ -18,6 +18,7 @@ window.onload = () => {
   const modal              = document.getElementById("modal");
   const closeModalBtn      = document.getElementById("close-modal");
   const formCliente        = document.getElementById("formCliente");
+  const LogOutBtn          = document.getElementById("logout");
 
   asideElement.style.display       = "none";
   ordenesActualesDiv.style.display = "none";
@@ -33,12 +34,15 @@ window.onload = () => {
     .then(({data}) => dibujarProductos(data))
     .catch(err => console.error("Error al obtener menú:", err));
 
-
+  LogOutBtn.addEventListener("click", () => {
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("refresh_token");
+    window.location.href = "";
+    });
   /* 4️⃣  Render de productos --------------- */
   function dibujarProductos(productos) {
     const container = itemsMenuContainer;
     container.innerHTML = "";
-
     productos.forEach(prod => {
       if (catActual !== prod.categoria) {
         const h2 = document.createElement("h2");

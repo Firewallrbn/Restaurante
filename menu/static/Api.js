@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function() {
 async function fetchAutenticado(url, options = {}) {
   const token = localStorage.getItem('access_token');
   
@@ -51,3 +52,4 @@ async function fetchAutenticado(url, options = {}) {
     const data = await response.json();
     localStorage.setItem('access_token', data.access);
   }
+});
